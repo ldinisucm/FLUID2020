@@ -1,0 +1,33 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.9.25)  26 OCT 2022 15:23
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**ajuste_teor_2tiempos.m
+(./ajuste_teor_2tiempos.m
+LaTeX2e <2017-04-15>
+Babel <3.18> and hyphenation patterns for 10 language(s) loaded.
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2 t
+     iempo=5;%12 24 48 72 96
+? x
+ 
+Here is how much of TeX's memory you used:
+ 7 strings out of 494788
+ 317 string characters out of 6177222
+ 46723 words of memory out of 5000000
+ 3436 multiletter control sequences out of 15000+600000
+ 3640 words of font info for 14 fonts, out of 8000000 for 9000
+ 85 hyphenation exceptions out of 8191
+ 5i,0n,4p,57b,14s stack positions out of 5000i,500n,10000p,200000b,80000s
+No pages of output.
+PDF statistics:
+ 0 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

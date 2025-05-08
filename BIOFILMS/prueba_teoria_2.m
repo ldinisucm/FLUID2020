@@ -1,0 +1,47 @@
+omega=[1:10 10:5:100 100:10:200 200:50:300];
+lambda=1.2;
+eta=0.03;
+x=1.05;
+wc=100;
+%Gprima
+gp=lambda^2*omega.^(x-1).*exp(-omega.^2/wc^2);
+%Gprimaprima
+gpp=eta*omega+lambda*omega.^(x-1).*exp(-omega.^2/wc^2);
+%figure
+%loglog(omega,gp,omega,gpp)
+%xlabel('\omega')
+%ylabel('G')
+%legend('G''','G"')
+
+x=1.05
+tau0=1/wc;
+tau0=1;
+a=0;
+b=0;
+N=1e6;
+omega=10.^[-2:.1:2];
+Z=1
+Gp=0
+Gpp=0
+for i=1:length(omega)
+  w=omega(i);
+  %u=[tau0*w:Du:10000*tau0*w];
+  u=linspace(tau0*w,1000000*tau0*w,N);
+  tau=linspace(tau0,1000000*tau0,N);
+  Du=(max(u)-min(u))/N;
+int1=Du*sum(u.^(2-x)./(1+u.^2));
+int2=Du*sum(u.^(1-x)./(1+u.^2));
+a(i)=int1*w^(x-1)/Z;
+b(i)=int2*w^(x-1)/Z;
+  Dtau=(max(tau)-min(tau))/N;
+  Gp(i)=1/Z*Dtau*sum(tau.^(-x).*real((j*w*tau)./(1+j*w*tau)));
+  Gpp(i)=1/Z*Dtau*sum(tau.^(-x).*imag((j*w*tau)./(1+j*w*tau)));
+%a(i)=int
+end
+%a=a/a(1);
+%figure
+loglog(omega,a,omega,b,omega,Gp,omega,Gpp)
+legend('Gp','Gpp','Gp','Gpp');
+%loglog(omega,a)
+ratio_at_w0_num=b(1)/a(1)
+ratio_at_w0_teor=pi/2*(x-1)

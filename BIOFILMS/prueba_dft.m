@@ -1,0 +1,32 @@
+tau0=1
+a=0;
+atc=00;
+a_dft=0;
+aheavi=0;
+tc=00.1;
+N=100;
+G0=5e-3;
+omega=10.^[-2:.16:2];
+dft_num=0
+Gprima_num=0;
+Gprima_teor=0;
+ft_teor=0
+  tau=1*tau0;
+  x=1.2
+for i=1:length(omega)
+  w=omega(i);
+  %u=[tau0*w:Du:10000*tau0*w];
+  %int_tau=Dtau*sum((w^2*tau.^(2-x))./(1+w^2*tau.^2));
+  i
+ tic
+  dft_num(i)=dft_exp_directo(tau,tc,w);
+  Gprima_num(i)=tau^(-x)*real(j*w*dft_num(i));
+  toc
+  Gprima_teor(i)=(w^2*tau.^(4-x).*(1-2*tc./tau))./((tau+tc*tau.^2*w^2-tc).^2+(2*tc*tau*w+w*tau.^2).^2);
+%%a(i)=int
+end
+figure
+loglog(omega,Gprima_teor,omega,Gprima_num)
+%figure(2)
+%plot(omega,Gprima_teor,omega,Gprima_num)
+
